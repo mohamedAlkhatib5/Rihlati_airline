@@ -26,20 +26,18 @@ The application demonstrates modern front-end development practices, including r
 - 🚀 Optimized user experience
 
 ---
+## 🛠️ Technologies & Libraries
 
-# 🛠️ Technologies Used
-
-- React
+- React 19
 - Vite
 - React Router DOM
 - React Bootstrap
 - Bootstrap 5
-- JavaScript (ES6+)
-- CSS3
-- HTML5
+- Bootstrap Icons
 - Framer Motion
-- React Icons
-- AOS (Animate On Scroll)
+- JavaScript (ES6+)
+- HTML5
+- CSS3
 - Context API
 ---
 
