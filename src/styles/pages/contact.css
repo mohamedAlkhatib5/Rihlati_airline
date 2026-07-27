@@ -1,0 +1,46 @@
+.contact-list {
+  display: grid;
+  gap: 1rem;
+}
+.contact-list > div {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.05rem;
+  border-radius: 18px;
+  background: var(--sky);
+}
+.contact-list i {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #fff;
+  color: var(--primary);
+  font-size: 1.15rem;
+}
+.contact-list strong {
+  display: block;
+  color: var(--navy);
+}
+.contact-form {
+  padding: 2.2rem;
+  border-radius: 26px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.contact-form label {
+  font-weight: 750;
+  color: var(--navy);
+}
+.contact-form textarea.form-control {
+  min-height: 155px;
+}
+@media (max-width: 767.98px) {
+  .contact-form {
+    padding: 1.3rem;
+  }
+}

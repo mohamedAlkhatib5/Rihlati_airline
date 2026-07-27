@@ -1,0 +1,952 @@
+/* =========================================================
+   1) إعدادات عامة وألوان المشروع
+   ========================================================= */
+:root {
+  --primary: #0b72e7;
+  --primary-dark: #0751a8;
+  --accent: #25b6d9;
+  --sky: #eef8ff;
+  --sky-deep: #dff2ff;
+  --sand: #fff8ee;
+  --navy: #06213f;
+  --text: #26374b;
+  --muted: #6f8298;
+  --surface: #ffffff;
+  --line: #dce9f5;
+  --shadow: 0 22px 65px rgba(18, 72, 126, 0.14);
+  --soft-shadow: 0 14px 38px rgba(19, 75, 123, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Tahoma, Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.7;
+}
+html[dir="rtl"] body {
+  font-family: Tahoma, Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+button,
+input,
+select,
+textarea {
+  box-shadow: none !important;
+}
+main {
+  overflow: hidden;
+}
+
+/* =========================================================
+   2) عناصر وأزرار مشتركة
+   ========================================================= */
+.section-space {
+  position: relative;
+  padding: 108px 0;
+}
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+html[dir="rtl"] .eyebrow {
+  letter-spacing: 0.04em;
+}
+.section-title {
+  max-width: 720px;
+  margin-bottom: 3.25rem;
+}
+.section-title h2 {
+  color: var(--navy);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+html[dir="rtl"] .section-title h2 {
+  letter-spacing: 0;
+}
+.section-title p {
+  color: var(--muted);
+  margin: 1rem 0 0;
+  font-size: 1.04rem;
+}
+.primary-action,
+.secondary-action,
+.hero-secondary {
+  border-radius: 14px;
+  padding: 0.88rem 1.45rem;
+  font-weight: 750;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+.primary-action {
+  border: 0;
+  background: linear-gradient(135deg, var(--primary), #28a9ff);
+  box-shadow: 0 10px 24px rgba(11, 114, 231, 0.22) !important;
+}
+.primary-action:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  box-shadow: 0 15px 30px rgba(11, 114, 231, 0.3) !important;
+}
+.secondary-action {
+  background: #fff;
+  color: var(--primary);
+  border: 1px solid var(--line);
+}
+.secondary-action:hover {
+  background: var(--sky);
+  color: var(--primary-dark);
+  border-color: #b7d9f7;
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   3) النافبار والروابط التفاعلية
+   ========================================================= */
+/* =========================================================
+   1) النافبار الرئيسي
+   ========================================================= */
+
+.site-navbar {
+  padding: 1.05rem 0;
+  background: transparent;
+  transition:
+    padding 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* النافبار بعد النزول في الصفحة */
+.site-navbar--scrolled {
+  padding: 0.68rem 0;
+  background: rgba(3, 29, 57, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* الحاوية الرئيسية */
+.navbar-layout {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+/* =========================================================
+   2) شعار الموقع
+   ========================================================= */
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.55rem;
+
+  color: #ffffff !important;
+  font-size: 1.35rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.brand-mark--dark {
+  color: var(--navy) !important;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+  background: linear-gradient(135deg, #28b3ff, var(--primary));
+
+  color: #ffffff !important;
+  box-shadow: 0 8px 20px rgba(11, 114, 231, 0.28);
+}
+
+/* =========================================================
+   3) قائمة Bootstrap الرئيسية
+   ========================================================= */
+
+.nav-offcanvas {
+  flex-grow: 1;
+}
+
+.nav-offcanvas .offcanvas-body {
+  width: 100%;
+  padding: 0;
+  overflow: visible;
+  /* display: flex;
+  justify-content: space-between; */
+}
+
+/* توزيع الروابط في المنتصف والأزرار في النهاية */
+.navbar-content {
+  width: 100%;
+
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+/* =========================================================
+   4) روابط النافبار في المنتصف
+   ========================================================= */
+
+.navbar-links {
+  grid-column: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  white-space: nowrap;
+}
+
+/* شكل الرابط الأساسي */
+.nav-menu-link {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.9rem 1.9rem !important;
+
+  color: #ffffff !important;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+
+  text-decoration: none !important;
+
+  transition:
+    color 0.28s ease,
+    background 0.28s ease,
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+/* المحافظة على ظهور النص فوق خلفية الهوفر */
+.nav-menu-link span {
+  position: relative;
+  z-index: 2;
+}
+
+/* خلفية الهوفر المتحركة */
+.nav-menu-link::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  opacity: 0;
+  transform: scale(0.75);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* الخط المتحرك أسفل الرابط */
+.nav-menu-link::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+
+  width: 0;
+  height: 3px;
+
+  background: linear-gradient(90deg, #28b3ff, #ffffff, #28b3ff);
+
+  transform: translateX(-50%);
+
+  transition: width 0.3s ease;
+}
+
+/* تأثير الهوفر */
+.nav-menu-link:hover {
+  color: #ffffff !important;
+
+  transform: translateY(-3px);
+}
+
+/* إظهار خلفية الهوفر */
+.nav-menu-link:hover::before {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* إظهار الخط السفلي */
+.nav-menu-link:hover::after {
+  width: 80%;
+}
+
+/* الرابط النشط عند فتح الصفحة */
+.nav-menu-link.active,
+.nav-menu-link--active {
+  color: #ffffff !important;
+}
+
+.nav-menu-link.active::before,
+.nav-menu-link--active::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-menu-link.active::after,
+.nav-menu-link--active::after {
+  width: 80%;
+}
+
+/* =========================================================
+   5) الأزرار في نهاية النافبار
+   ========================================================= */
+
+.navbar-actions {
+  grid-column: 3;
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+}
+
+/* =========================================================
+   6) زر تغيير اللغة
+   ========================================================= */
+
+.language-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+
+  min-height: 46px;
+  padding: 0.68rem 0.95rem;
+
+  background: transparent;
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 12px;
+
+  font-size: 0.95rem;
+  font-weight: 750;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.language-btn:hover,
+.language-btn:focus,
+.language-btn:active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   7) زر حجز الرحلة
+   ========================================================= */
+
+.nav-book-btn {
+  min-height: 46px;
+  padding: 0.72rem 1.1rem;
+
+  background: #ffffff;
+  color: var(--primary);
+
+  border: 0;
+  border-radius: 12px;
+
+  font-size: 0.95rem;
+  font-weight: 800;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nav-book-btn:hover,
+.nav-book-btn:focus,
+.nav-book-btn:active {
+  color: var(--primary-dark) !important;
+  background: #dff3ff !important;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(40, 179, 255, 0.24);
+}
+
+/* =========================================================
+   8) زر فتح القائمة في الهاتف
+   ========================================================= */
+
+.navbar-toggler {
+  padding: 0.5rem 0.65rem;
+
+  border: 0 !important;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(40, 179, 255, 0.25) !important;
+}
+
+/* =========================================================
+   9) الشاشات المتوسطة
+   ========================================================= */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .navbar-links {
+    gap: 0.05rem;
+  }
+
+  .nav-menu-link {
+    padding: 0.75rem 0.7rem !important;
+    font-size: 0.96rem;
+  }
+
+  .navbar-actions {
+    gap: 0.45rem;
+  }
+
+  .language-btn {
+    padding-inline: 0.7rem;
+  }
+
+  .nav-book-btn {
+    padding-inline: 0.85rem;
+  }
+}
+
+/* =========================================================
+   10) الشاشات الصغيرة والقائمة الجانبية
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+  .site-navbar {
+    padding: 0.75rem 0;
+    width: 100%;
+  }
+
+  .site-navbar--scrolled {
+    padding: 0.6rem 0;
+  }
+
+  .brand-mark {
+    font-size: 1.25rem;
+  }
+
+  .brand-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  /* مساحة القائمة الجانبية */
+  .nav-offcanvas .offcanvas-body {
+    padding: 1rem 1.25rem 2rem;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  /* تحويل التوزيع إلى عمودي */
+  .navbar-content {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  /* روابط القائمة الجانبية */
+  .navbar-links {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+
+    white-space: normal;
+  }
+
+  .nav-offcanvas .nav-menu-link {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 0.9rem 1rem !important;
+
+    color: var(--text) !important;
+    font-size: 1.08rem;
+    font-weight: 800;
+    text-align: start;
+  }
+
+  /* هوفر روابط القائمة الجانبية */
+  .nav-offcanvas .nav-menu-link:hover {
+    color: var(--primary) !important;
+    background: none;
+    transform: translateX(5px);
+    box-shadow: none;
+  }
+
+  /* الرابط النشط في القائمة الجانبية */
+  .nav-offcanvas .nav-menu-link.active,
+  .nav-offcanvas .nav-menu-link--active {
+    color: var(--primary) !important;
+    background: none !important;
+    box-shadow: none;
+  }
+
+  /* إلغاء خلفية الهوفر الخاصة بالديسكتوب */
+  .nav-offcanvas .nav-menu-link::before {
+    background: linear-gradient(
+      135deg,
+      rgba(40, 179, 255, 0.14),
+      rgba(40, 179, 255, 0.05)
+    );
+  }
+
+  /* الخط أسفل الرابط في الهاتف */
+  .nav-offcanvas .nav-menu-link::after {
+    left: 0px;
+    right: auto;
+    bottom: 5px;
+
+    background: var(--primary);
+    transform: none;
+  }
+
+  .nav-offcanvas .nav-menu-link:hover::after,
+  .nav-offcanvas .nav-menu-link.active::after,
+  .nav-offcanvas .nav-menu-link--active::after {
+    width: 100%;
+  }
+
+  /* الأزرار بعد الروابط */
+  .navbar-actions {
+    width: 100%;
+    margin-top: 1.25rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .nav-offcanvas .language-btn,
+  .nav-offcanvas .nav-book-btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  /* زر اللغة داخل القائمة الجانبية */
+  .nav-offcanvas .language-btn {
+    margin: 0;
+
+    color: var(--primary);
+    background: transparent;
+
+    border-color: var(--line);
+  }
+
+  .nav-offcanvas .language-btn:hover,
+  .nav-offcanvas .language-btn:focus {
+    color: var(--primary-dark) !important;
+    background: var(--sky) !important;
+    border-color: var(--primary) !important;
+  }
+
+  /* زر الحجز داخل القائمة الجانبية */
+  .nav-offcanvas .nav-book-btn {
+    color: #ffffff;
+    background: var(--primary);
+  }
+
+  .nav-offcanvas .nav-book-btn:hover,
+  .nav-offcanvas .nav-book-btn:focus {
+    color: #ffffff !important;
+    background: var(--primary-dark) !important;
+  }
+}
+
+/* =========================================================
+   11) اتجاه اللغة العربية في القائمة الجانبية
+   ========================================================= */
+
+[dir="rtl"] .nav-offcanvas .nav-menu-link {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-offcanvas .nav-menu-link:hover {
+  transform: translateX(-5px);
+}
+
+[dir="rtl"] .nav-offcanvas .nav-menu-link::after {
+  right: 1rem;
+  left: auto;
+}
+
+/* =========================================================
+   12) تقليل الحركة لمن يفضل ذلك
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .site-navbar,
+  .nav-menu-link,
+  .nav-menu-link::before,
+  .nav-menu-link::after,
+  .language-btn,
+  .nav-book-btn {
+    transition: none;
+  }
+}
+/* =========================================================
+   4) نموذج الحجز
+   ========================================================= */
+.booking-panel {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 26px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+.booking-panel--compact {
+  max-width: 1080px;
+}
+.booking-panel__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.55rem;
+}
+.booking-panel__top h2 {
+  color: var(--navy);
+  margin: 0;
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  font-weight: 850;
+}
+.booking-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--sky);
+  color: var(--primary-dark);
+  padding: 0.68rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 750;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.booking-panel label {
+  font-weight: 750;
+  color: var(--navy);
+  font-size: 0.9rem;
+}
+.booking-panel .form-control,
+.booking-panel .form-select,
+.contact-form .form-control {
+  min-height: 52px;
+  border-radius: 13px;
+  border-color: var(--line);
+  background-color: #fbfdff;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+.booking-panel .form-control:focus,
+.booking-panel .form-select:focus,
+.contact-form .form-control:focus {
+  border-color: var(--primary);
+  background: #fff;
+  transform: translateY(-1px);
+}
+.booking-panel .primary-action {
+  min-height: 52px;
+}
+.booking-alert {
+  border: 0;
+  border-radius: 12px;
+}
+
+/* =========================================================
+   5) بطاقات الوجهات والفوتر
+   ========================================================= */
+.destination-card {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--soft-shadow);
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.destination-card:hover {
+  border-color: #bcdcf7;
+  box-shadow: var(--shadow);
+}
+.destination-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.destination-card img {
+  height: 255px;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.destination-card:hover img {
+  transform: scale(1.08);
+}
+.destination-card__tag {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 0.38rem 0.72rem;
+  border-radius: 999px;
+  color: var(--primary-dark);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+.destination-card .card-body {
+  padding: 1.45rem;
+}
+.destination-card .card-title {
+  color: var(--navy);
+  font-size: 1.35rem;
+  font-weight: 850;
+}
+.destination-card .card-text {
+  color: var(--muted);
+}
+.destination-price {
+  text-align: end;
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 850;
+}
+.destination-price small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+.card-link-btn {
+  padding: 0;
+  margin-top: 1rem;
+  background: transparent;
+  border: 0;
+  color: var(--primary);
+  font-weight: 850;
+}
+.card-link-btn:hover {
+  background: transparent;
+  color: var(--primary-dark);
+}
+.card-link-btn i {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+.card-link-btn:hover i {
+  transform: translateX(5px);
+}
+html[dir="rtl"] .card-link-btn:hover i {
+  transform: translateX(-5px);
+}
+.site-footer {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 78px 0 0;
+}
+.footer-brand {
+  margin-bottom: 1rem;
+}
+.site-footer h5 {
+  color: #fff;
+  font-weight: 850;
+  margin-bottom: 1rem;
+}
+.site-footer a:not(.brand-mark) {
+  display: block;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 0.65rem;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.site-footer a:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+html[dir="rtl"] .site-footer a:hover {
+  transform: translateX(-4px);
+}
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+.social-links a {
+  width: 42px !important;
+  height: 42px;
+  display: grid !important;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff !important;
+}
+.social-links a:hover {
+  background: var(--primary);
+  transform: translateY(-4px) !important;
+}
+.footer-bottom {
+  margin-top: 55px;
+  padding: 1.3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   7) التجاوب واتجاه RTL
+   ========================================================= */
+html[dir="rtl"] .ms-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+html[dir="rtl"] .ms-lg-2 {
+  margin-left: 0 !important;
+}
+html[dir="rtl"] .me-2 {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+@media (min-width: 992px) {
+  html[dir="rtl"] .ms-lg-2 {
+    margin-right: 0.5rem !important;
+  }
+}
+@media (max-width: 991.98px) {
+  .site-navbar {
+    background: rgba(3, 29, 57, 0.92);
+    backdrop-filter: blur(12px);
+  }
+  .nav-offcanvas .navbar-nav {
+    align-items: stretch !important;
+  }
+  .language-btn,
+  .nav-book-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .section-space {
+    padding: 84px 0;
+  }
+  .site-footer {
+text-align: center;
+}
+
+  .site-footer .col,
+  .site-footer [class*="col-"] {
+    text-align: center;
+  }
+
+  .site-footer a:not(.brand-mark) {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+justify-content: center;
+}
+}
+@media (max-width: 767.98px) {
+  .booking-panel {
+    padding: 1.3rem;
+    border-radius: 20px;
+  }
+  .booking-panel__top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .booking-badge {
+    font-size: 0.8rem;
+  }
+  .section-title {
+    margin-bottom: 2.3rem;
+  }
+  .shape-divider {
+    height: 45px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
