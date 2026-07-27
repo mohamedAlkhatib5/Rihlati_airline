@@ -49,12 +49,53 @@ The application demonstrates modern front-end development practices, including r
 src/
 │
 ├── assets/
+│   └── images/
+│
 ├── components/
-├── pages/
+│   ├── BookingForm.jsx
+│   ├── DestinationCard.jsx
+│   ├── Footer.jsx
+│   ├── Hero.jsx
+│   ├── ScrollToTop.jsx
+│   ├── SectionTitle.jsx
+│   └── SiteNavbar.jsx
+│
 ├── context/
-├── hooks/
+│   └── LanguageContext.jsx
+│
+├── data/
+│   └── siteData.js
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Flights.jsx
+│   ├── Destinations.jsx
+│   ├── About.jsx
+│   ├── Contact.jsx
+│   └── NotFound.jsx
+│
+├── styles/
+│   ├── global.css
+│   ├── home.css
+│   └── pages/
+│       ├── about.css
+│       ├── common-page.css
+│       ├── contact.css
+│       ├── destinations.css
+│       ├── flights.css
+│       └── not-found.css
+│
 ├── App.jsx
 └── main.jsx
+
+public/
+│
+└── favicon.png
+
+index.html
+package.json
+vite.config.js
+README.md
 ```
 
 ---
