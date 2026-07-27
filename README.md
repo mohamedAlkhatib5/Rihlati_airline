@@ -137,5 +137,5 @@ This application is fully optimized for:
 - Professional UI/UX principles
 
 ---
-<img width="1893" height="1076" alt="sky" src="https://github.com/user-attachments/assets/4ed1a1e0-ad35-4d45-84cd-d78a052bd814" />
+
 
