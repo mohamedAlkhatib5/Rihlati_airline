@@ -13,6 +13,7 @@ Bilingual English / Arabic, right-to-left throughout.
 [![MySQL](https://img.shields.io/badge/MySQL-8-00758f)](https://www.mysql.com)
 [![License](https://img.shields.io/badge/license-MIT-black)](#license)
 
+**[🌐 Live demo](#live-demo)** ·
 [Getting started](#getting-started) ·
 [Features](#what-it-does) ·
 [Architecture](#architecture) ·
@@ -20,6 +21,36 @@ Bilingual English / Arabic, right-to-left throughout.
 [Deployment](#deployment)
 
 </div>
+
+---
+
+## Live demo
+
+| | |
+| --- | --- |
+| 🌐 **Website** | _not published yet — see [Deployment](#deployment)_ |
+| 🔐 **Dashboard** | `/login` |
+
+### Sign in
+
+| Role | Email | Password | What you can do |
+| ---- | ----- | -------- | --------------- |
+| 👑 **Administrator** | `admin@rihlati.demo` | `Admin@12345` | Everything — create, edit and delete flights, change booking status |
+| 👔 **Operations staff** | `staff@rihlati.demo` | `Staff@12345` | Read the dashboard, view manifests |
+| 🧳 **Customer** | `omar.haddad@example.com` | `Traveller@123` | Book and manage trips |
+
+### Book a flight in 60 seconds
+
+1. Open **`/flights`**, type `DXB` and `LHR`, pick a date a few days out, set 2 passengers, **Search**.
+2. Choose a fare on the **outbound**, then on the **return** — the bar at the bottom keeps the total.
+3. **Continue** → fill in the travellers and a contact email.
+4. Pick seats, or skip and they are assigned for you.
+5. Pay with any card number starting **`4242`** (e.g. `4242 4242 4242 4242`, exp `09/29`, CVC `123`).
+6. You get a real booking reference. Look it up any time at **`/manage-booking`**.
+
+> Everything is real: the flights come from the database, the seat you pick is
+> locked so nobody else can take it, and the booking appears in the dashboard
+> immediately.
 
 ---
 
@@ -51,10 +82,35 @@ Bilingual English / Arabic, right-to-left throughout.
 
 ## Screens
 
+### The booking flow
+
+| Search — outbound and return chosen separately | Seats — live availability per cabin |
+| :--: | :--: |
+| ![Flight search results](docs/screenshots/search.webp) | ![Seat map](docs/screenshots/seats.webp) |
+
+| Payment — brand detected, nothing sensitive stored | Confirmation — PNR, seats, printable ticket |
+| :--: | :--: |
+| ![Checkout](docs/screenshots/payment.webp) | ![Booking confirmed](docs/screenshots/confirmation.webp) |
+
+### The site
+
 | | |
-| --- | --- |
-| **Search** — outbound and return chosen separately, with a sticky total | **Booking** — stepper, seat map, fare summary |
-| **Confirmation** — PNR, itinerary, seats, printable ticket | **Dashboard** — KPIs, revenue chart, top routes |
+| :--: | :--: |
+| ![Home page](docs/screenshots/home.webp) | ![Home page in Arabic](docs/screenshots/home-arabic.webp) |
+| **Home** | **The same page in Arabic** — the layout mirrors, gradients reverse, arrows flip |
+| ![Destinations](docs/screenshots/destinations.webp) | ![Offers](docs/screenshots/offers.webp) |
+| **25 destinations**, real photography | **Offers** with copyable promo codes |
+| ![Manage booking](docs/screenshots/manage-booking.webp) | |
+| **Manage booking** — look a trip up, see every traveller's seat, cancel it | |
+
+### The dashboard
+
+![Operations dashboard](docs/screenshots/admin-dashboard.webp)
+
+| | |
+| :--: | :--: |
+| ![Flight management](docs/screenshots/admin-flights.webp) | ![Passenger manifest](docs/screenshots/admin-manifest.webp) |
+| **Flight management** — create, edit, withdraw | **Passenger manifest** — names, seats, CSV export |
 
 ---
 
@@ -84,15 +140,7 @@ npm run dev
 The seeder loads 25 destinations, ~3,300 flights, 90 bookings with passengers
 and seats, and 8 offers — so the app is usable the moment it starts.
 
-### Demo accounts
-
-| Role | Email | Password |
-| ---- | ----- | -------- |
-| Administrator | `admin@rihlati.demo` | `Admin@12345` |
-| Operations staff | `staff@rihlati.demo` | `Staff@12345` |
-| Customer | `omar.haddad@example.com` | `Traveller@123` |
-
-Sign in at `/login`. Any card number starting `4242` passes the demo checkout.
+Sign-in details are in [Live demo](#live-demo) above.
 
 ---
 
