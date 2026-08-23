@@ -1,4 +1,36 @@
 {
+  "amman": {
+    "width": 1800,
+    "height": 1200
+  },
+  "amsterdam": {
+    "width": 2480,
+    "height": 1654
+  },
+  "athens": {
+    "width": 3840,
+    "height": 2560
+  },
+  "bangkok": {
+    "width": 3840,
+    "height": 2561
+  },
+  "barcelona": {
+    "width": 3840,
+    "height": 1793
+  },
+  "beirut": {
+    "width": 3840,
+    "height": 2162
+  },
+  "cairo": {
+    "width": 3840,
+    "height": 2384
+  },
+  "casablanca": {
+    "width": 2930,
+    "height": 1361
+  },
   "clouds-decor": {
     "width": 749,
     "height": 328
@@ -6,6 +38,10 @@
   "clouds-sky": {
     "width": 3264,
     "height": 2448
+  },
+  "doha": {
+    "width": 3840,
+    "height": 2543
   },
   "dubai": {
     "width": 3840,
@@ -19,6 +55,14 @@
     "width": 4275,
     "height": 2196
   },
+  "jeddah": {
+    "width": 2048,
+    "height": 1365
+  },
+  "kualalumpur": {
+    "width": 3840,
+    "height": 2162
+  },
   "london": {
     "width": 2048,
     "height": 3216
@@ -27,8 +71,44 @@
     "width": 1024,
     "height": 681
   },
+  "muscat": {
+    "width": 3840,
+    "height": 2051
+  },
+  "newyork": {
+    "width": 3840,
+    "height": 2160
+  },
   "paris": {
     "width": 2900,
     "height": 5367
+  },
+  "riyadh": {
+    "width": 3840,
+    "height": 2160
+  },
+  "rome": {
+    "width": 3840,
+    "height": 2690
+  },
+  "singapore": {
+    "width": 3840,
+    "height": 2560
+  },
+  "tokyo": {
+    "width": 2560,
+    "height": 1364
+  },
+  "toronto": {
+    "width": 3840,
+    "height": 2306
+  },
+  "vienna": {
+    "width": 3840,
+    "height": 2623
+  },
+  "zurich": {
+    "width": 3840,
+    "height": 2094
   }
 }

@@ -26,3 +26,15 @@ Thumbs.db
 # Build & tooling
 client/dist/
 .env
+
+# Laravel
+server/vendor/
+server/.env
+server/storage/logs/*.log
+server/storage/framework/cache/data/*
+server/storage/framework/sessions/*
+server/storage/framework/views/*
+server/bootstrap/cache/*.php
+
+# Large image originals — regenerate with `npm run images:fetch`
+client/src/assets/images-src/
