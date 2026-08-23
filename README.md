@@ -28,8 +28,17 @@ Bilingual English / Arabic, right-to-left throughout.
 
 | | |
 | --- | --- |
-| 🌐 **Website** | _not published yet — see [Deployment](#deployment)_ |
-| 🔐 **Dashboard** | `/login` |
+| 🌐 **Website** | **<https://rihlati-airline.vercel.app>** |
+| 🔐 **Dashboard** | <https://rihlati-airline.vercel.app/login> |
+
+> **What works on the hosted demo:** every page, all 25 destinations, the full
+> bilingual interface and the responsive layout.
+>
+> **What needs the API:** flight search, booking and the dashboard read from a
+> live Laravel + MySQL backend. The hosted front-end has no API attached yet, so
+> those screens will report that the server is unreachable. Run the project
+> locally — see [Getting started](#getting-started) — and everything works end to
+> end in about five minutes.
 
 ### Sign in
 
@@ -341,9 +350,15 @@ php artisan config:cache && php artisan route:cache
 Set `APP_ENV=production`, `APP_DEBUG=false`, a fresh `JWT_SECRET`, and
 `FRONTEND_URL` to your deployed front-end so CORS allows it.
 
-> **Live demo:** not yet published. Deploy the two halves above and add the URL
-> here — the front-end alone will render, but search, booking and the dashboard
-> need the API.
+The repository root carries a `vercel.json` that builds `client/` and serves it
+as a single-page app, so pushing to `main` deploys the front-end automatically.
+
+Once the API is hosted, add a rewrite above the SPA catch-all so the browser
+keeps talking to one origin:
+
+```json
+{ "source": "/api/:path*", "destination": "https://YOUR-API-HOST/api/:path*" }
+```
 
 ---
 
