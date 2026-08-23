@@ -1,6 +1,7 @@
 import { MotionConfig } from 'framer-motion';
 import { BrowserRouter } from 'react-router-dom';
 
+import { AuthProvider } from '../../features/auth/AuthProvider';
 import { ErrorBoundary } from '../../shared/components/feedback/ErrorBoundary';
 import { LanguageProvider } from '../../i18n/LanguageProvider';
 
@@ -15,9 +16,11 @@ export function AppProviders({ children }) {
   return (
     <BrowserRouter>
       <LanguageProvider>
-        <MotionConfig reducedMotion="user">
-          <ErrorBoundary>{children}</ErrorBoundary>
-        </MotionConfig>
+        <AuthProvider>
+          <MotionConfig reducedMotion="user">
+            <ErrorBoundary>{children}</ErrorBoundary>
+          </MotionConfig>
+        </AuthProvider>
       </LanguageProvider>
     </BrowserRouter>
   );

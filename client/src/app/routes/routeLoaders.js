@@ -13,7 +13,20 @@ export const routeLoaders = {
     import('../../features/destinations/DestinationsPage'),
   [ROUTES.about]: () => import('../../features/about/AboutPage'),
   [ROUTES.contact]: () => import('../../features/contact/ContactPage'),
+  [ROUTES.login]: () => import('../../features/auth/LoginPage'),
   [ROUTES.notFound]: () => import('../../features/not-found/NotFoundPage'),
+};
+
+/**
+ * Dashboard chunks are deliberately excluded from idle prefetching: a visitor
+ * who never signs in should not download the admin bundle at all.
+ */
+export const dashboardLoaders = {
+  layout: () => import('../../features/admin/AdminLayout'),
+  overview: () => import('../../features/admin/DashboardPage'),
+  flights: () => import('../../features/admin/FlightsPage'),
+  manifest: () => import('../../features/admin/ManifestPage'),
+  bookings: () => import('../../features/admin/BookingsPage'),
 };
 
 const started = new Set();
@@ -27,7 +40,7 @@ export function prefetchRoute(path) {
   load().catch(() => started.delete(path));
 }
 
-/** Warms every route once the browser is idle after the first paint. */
+/** Warms every public route once the browser is idle after the first paint. */
 export function prefetchAllRoutes() {
   Object.keys(routeLoaders).forEach(prefetchRoute);
 }

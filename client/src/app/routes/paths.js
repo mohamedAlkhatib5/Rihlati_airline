@@ -5,6 +5,13 @@ export const ROUTES = {
   destinations: '/destinations',
   about: '/about',
   contact: '/contact',
+  login: '/login',
+
+  admin: '/admin',
+  adminFlights: '/admin/flights',
+  adminManifest: '/admin/flights/:flightId/manifest',
+  adminBookings: '/admin/bookings',
+
   notFound: '*',
 };
 
@@ -13,3 +20,6 @@ export const SECTIONS = {
   services: 'services',
   newsletter: 'newsletter',
 };
+
+/** The dashboard renders in its own shell, without the marketing chrome. */
+export const isDashboardPath = (pathname) => pathname.startsWith(ROUTES.admin);

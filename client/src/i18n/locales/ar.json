@@ -204,5 +204,156 @@
     "boundaryText": "تعذّر عرض الصفحة. حاول إعادة التحميل أو العودة إلى الصفحة الرئيسية.",
     "reload": "إعادة تحميل الصفحة",
     "home": "العودة للرئيسية"
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signInLead": "ادخل إلى لوحة تحكّم عمليات رحلتي.",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "signingIn": "جارٍ الدخول…",
+    "demoAccounts": "حسابات تجريبية",
+    "roleAdmin": "مدير النظام",
+    "roleStaff": "موظف العمليات"
+  },
+  "admin": {
+    "title": "لوحة التحكم",
+    "signOut": "تسجيل الخروج",
+    "viewSite": "عرض الموقع",
+    "overviewTitle": "نظرة عامة على العمليات",
+    "overviewLead": "الإيرادات والطلب ونسب الإشغال عبر الشبكة.",
+    "kpis": "المؤشرات الرئيسية",
+    "empty": "لا توجد بيانات بعد.",
+    "viewAll": "عرض الكل",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ…",
+    "close": "إغلاق",
+    "yes": "نعم",
+    "no": "لا",
+    "previous": "السابق",
+    "next": "التالي",
+    "pagination": "التنقل بين الصفحات",
+    "pageOf": "صفحة {{page}} من {{total}}",
+    "roles": {
+      "admin": "مدير النظام",
+      "staff": "موظف العمليات",
+      "customer": "عميل"
+    },
+    "nav": {
+      "overview": "نظرة عامة",
+      "flights": "الرحلات",
+      "bookings": "الحجوزات"
+    },
+    "kpi": {
+      "revenueMonth": "إيرادات هذا الشهر",
+      "revenueTotal": "الإجمالي الكلي {{value}}",
+      "bookingsMonth": "حجوزات هذا الشهر",
+      "bookingsToday": "{{count}} اليوم",
+      "bookingsTodayLabel": "حجوزات أُنشئت اليوم",
+      "passengers": "الركاب المحجوزون",
+      "averageValue": "متوسط {{value}} للحجز",
+      "upcomingFlights": "الرحلات القادمة",
+      "scheduled": "مجدولة ومتاحة للحجز"
+    },
+    "panel": {
+      "revenue": "الإيرادات حسب الشهر",
+      "revenueLead": "الحجوزات المؤكدة والمكتملة.",
+      "status": "الحجوزات حسب الحالة",
+      "routes": "أكثر المسارات ازدحامًا",
+      "routesLead": "حسب عدد الأجزاء المحجوزة.",
+      "cabins": "توزيع درجات السفر",
+      "recent": "أحدث الحجوزات",
+      "inbox": "صندوق الرسائل",
+      "inboxLead": "رسائل غير مقروءة",
+      "today": "اليوم"
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "confirmed": "مؤكد",
+      "cancelled": "ملغى",
+      "completed": "مكتمل"
+    },
+    "flightStatus": {
+      "scheduled": "مجدولة",
+      "delayed": "متأخرة",
+      "departed": "أقلعت",
+      "arrived": "وصلت",
+      "cancelled": "ملغاة"
+    },
+    "passengerType": {
+      "adult": "بالغ",
+      "child": "طفل",
+      "infant": "رضيع"
+    },
+    "table": {
+      "pnr": "رمز الحجز",
+      "contact": "جهة الاتصال",
+      "status": "الحالة",
+      "total": "الإجمالي",
+      "created": "تاريخ الإنشاء",
+      "flight": "الرحلة",
+      "route": "المسار",
+      "departs": "المغادرة",
+      "aircraft": "الطائرة",
+      "fare": "ابتداءً من",
+      "actions": "إجراءات"
+    },
+    "flights": {
+      "title": "إدارة الرحلات",
+      "lead": "إضافة وتعديل وسحب الرحلات المجدولة.",
+      "schedule": "الجدول",
+      "add": "إضافة رحلة",
+      "edit": "تعديل الرحلة",
+      "delete": "حذف الرحلة",
+      "manifest": "قائمة الركاب",
+      "empty": "لا توجد رحلات مطابقة.",
+      "searchLabel": "بحث في الرحلات",
+      "searchPlaceholder": "رقم الرحلة أو المدينة أو رمز المطار",
+      "allStatuses": "كل الحالات",
+      "applyFilters": "تطبيق",
+      "createTitle": "إضافة رحلة",
+      "editTitle": "تعديل رحلة",
+      "deleteTitle": "حذف هذه الرحلة؟",
+      "deleteMessage": "سيتم حذف الرحلة {{flight}} نهائيًا. لا يمكن التراجع عن هذا الإجراء."
+    },
+    "form": {
+      "flightNumber": "رقم الرحلة",
+      "aircraft": "الطائرة",
+      "origin": "من",
+      "destination": "إلى",
+      "departure": "المغادرة",
+      "arrival": "الوصول",
+      "basePrice": "السعر الأساسي (دولار)",
+      "cabins": "أسعار الدرجات وسعتها",
+      "price": "السعر",
+      "seats": "المقاعد"
+    },
+    "bookings": {
+      "title": "الحجوزات",
+      "lead": "كل الحجوزات مع أسماء المسافرين.",
+      "all": "جميع الحجوزات",
+      "travellers": "المسافرون",
+      "empty": "لا توجد حجوزات مطابقة.",
+      "searchLabel": "بحث في الحجوزات",
+      "searchPlaceholder": "رمز الحجز أو البريد أو اسم الراكب",
+      "allStatuses": "كل الحالات"
+    },
+    "manifest": {
+      "title": "قائمة الركاب",
+      "back": "العودة للرحلات",
+      "export": "تنزيل CSV",
+      "passengers": "الركاب",
+      "capacity": "من أصل {{count}} مقعد",
+      "loadFactor": "نسبة الإشغال",
+      "checkedIn": "سجّلوا الدخول",
+      "ofTotal": "من {{count}} مسافر",
+      "list": "المسافرون على هذه الرحلة",
+      "listLead": "مرتّبة حسب المقعد. الحجوزات الملغاة مستثناة.",
+      "seat": "المقعد",
+      "name": "الراكب",
+      "type": "النوع",
+      "cabin": "الدرجة",
+      "empty": "لا يوجد ركاب على هذه الرحلة بعد."
+    }
   }
 }

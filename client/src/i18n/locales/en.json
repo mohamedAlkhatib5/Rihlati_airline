@@ -202,5 +202,156 @@
     "boundaryText": "The page could not be displayed. Try reloading, or return to the homepage.",
     "reload": "Reload page",
     "home": "Back to home"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signInLead": "Access the Rihlati operations dashboard.",
+    "email": "Email address",
+    "password": "Password",
+    "signingIn": "Signing in…",
+    "demoAccounts": "Demo accounts",
+    "roleAdmin": "Administrator",
+    "roleStaff": "Operations staff"
+  },
+  "admin": {
+    "title": "Dashboard",
+    "signOut": "Sign out",
+    "viewSite": "View site",
+    "overviewTitle": "Operations overview",
+    "overviewLead": "Revenue, demand and load across the network.",
+    "kpis": "Key figures",
+    "empty": "Nothing to show yet.",
+    "viewAll": "View all",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving…",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "previous": "Previous",
+    "next": "Next",
+    "pagination": "Pagination",
+    "pageOf": "Page {{page}} of {{total}}",
+    "roles": {
+      "admin": "Administrator",
+      "staff": "Operations staff",
+      "customer": "Customer"
+    },
+    "nav": {
+      "overview": "Overview",
+      "flights": "Flights",
+      "bookings": "Bookings"
+    },
+    "kpi": {
+      "revenueMonth": "Revenue this month",
+      "revenueTotal": "All time {{value}}",
+      "bookingsMonth": "Bookings this month",
+      "bookingsToday": "{{count}} today",
+      "bookingsTodayLabel": "Bookings created today",
+      "passengers": "Passengers booked",
+      "averageValue": "Avg {{value}} per booking",
+      "upcomingFlights": "Upcoming flights",
+      "scheduled": "Scheduled and bookable"
+    },
+    "panel": {
+      "revenue": "Revenue by month",
+      "revenueLead": "Confirmed and completed bookings.",
+      "status": "Bookings by status",
+      "routes": "Busiest routes",
+      "routesLead": "By number of booked segments.",
+      "cabins": "Cabin mix",
+      "recent": "Recent bookings",
+      "inbox": "Contact inbox",
+      "inboxLead": "Unread messages",
+      "today": "Today"
+    },
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "completed": "Completed"
+    },
+    "flightStatus": {
+      "scheduled": "Scheduled",
+      "delayed": "Delayed",
+      "departed": "Departed",
+      "arrived": "Arrived",
+      "cancelled": "Cancelled"
+    },
+    "passengerType": {
+      "adult": "Adult",
+      "child": "Child",
+      "infant": "Infant"
+    },
+    "table": {
+      "pnr": "Reference",
+      "contact": "Contact",
+      "status": "Status",
+      "total": "Total",
+      "created": "Created",
+      "flight": "Flight",
+      "route": "Route",
+      "departs": "Departs",
+      "aircraft": "Aircraft",
+      "fare": "From",
+      "actions": "Actions"
+    },
+    "flights": {
+      "title": "Flight management",
+      "lead": "Create, edit and withdraw scheduled flights.",
+      "schedule": "Schedule",
+      "add": "Add flight",
+      "edit": "Edit flight",
+      "delete": "Delete flight",
+      "manifest": "Passenger list",
+      "empty": "No flights match these filters.",
+      "searchLabel": "Search flights",
+      "searchPlaceholder": "Flight number, city or airport code",
+      "allStatuses": "All statuses",
+      "applyFilters": "Apply",
+      "createTitle": "Add a flight",
+      "editTitle": "Edit flight",
+      "deleteTitle": "Delete this flight?",
+      "deleteMessage": "Flight {{flight}} will be removed permanently. This cannot be undone."
+    },
+    "form": {
+      "flightNumber": "Flight number",
+      "aircraft": "Aircraft",
+      "origin": "From",
+      "destination": "To",
+      "departure": "Departs",
+      "arrival": "Arrives",
+      "basePrice": "Base fare (USD)",
+      "cabins": "Cabin pricing and capacity",
+      "price": "Price",
+      "seats": "Seats"
+    },
+    "bookings": {
+      "title": "Bookings",
+      "lead": "Every reservation, with its travellers.",
+      "all": "All bookings",
+      "travellers": "Travellers",
+      "empty": "No bookings match these filters.",
+      "searchLabel": "Search bookings",
+      "searchPlaceholder": "Reference, email or passenger name",
+      "allStatuses": "All statuses"
+    },
+    "manifest": {
+      "title": "Passenger list",
+      "back": "Back to flights",
+      "export": "Download CSV",
+      "passengers": "Passengers",
+      "capacity": "of {{count}} seats",
+      "loadFactor": "Load factor",
+      "checkedIn": "Checked in",
+      "ofTotal": "of {{count}} travelling",
+      "list": "Travellers on this flight",
+      "listLead": "Sorted by seat. Cancelled bookings are excluded.",
+      "seat": "Seat",
+      "name": "Passenger",
+      "type": "Type",
+      "cabin": "Cabin",
+      "empty": "No one is booked on this flight yet."
+    }
   }
 }

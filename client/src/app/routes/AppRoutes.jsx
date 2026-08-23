@@ -3,8 +3,10 @@ import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import { PageLoader } from '../../shared/components/ui/PageLoader';
+import { RequireDashboardAccess } from '../../features/auth/components/RequireDashboardAccess';
+import { SiteChrome } from '../../shared/components/layout/SiteChrome';
 import { ROUTES } from './paths';
-import { routeLoaders } from './routeLoaders';
+import { dashboardLoaders, routeLoaders } from './routeLoaders';
 
 /**
  * Home ships in the initial bundle because it is the entry point for almost
@@ -17,7 +19,16 @@ const FlightsPage = lazy(routeLoaders[ROUTES.flights]);
 const DestinationsPage = lazy(routeLoaders[ROUTES.destinations]);
 const AboutPage = lazy(routeLoaders[ROUTES.about]);
 const ContactPage = lazy(routeLoaders[ROUTES.contact]);
+const LoginPage = lazy(routeLoaders[ROUTES.login]);
 const NotFoundPage = lazy(routeLoaders[ROUTES.notFound]);
+
+const AdminLayout = lazy(() =>
+  dashboardLoaders.layout().then((module) => ({ default: module.AdminLayout })),
+);
+const DashboardPage = lazy(dashboardLoaders.overview);
+const AdminFlightsPage = lazy(dashboardLoaders.flights);
+const AdminManifestPage = lazy(dashboardLoaders.manifest);
+const AdminBookingsPage = lazy(dashboardLoaders.bookings);
 
 export function AppRoutes() {
   const location = useLocation();
@@ -28,12 +39,29 @@ export function AppRoutes() {
     <Suspense fallback={<PageLoader />}>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route path={ROUTES.home} element={<HomePage />} />
-          <Route path={ROUTES.flights} element={<FlightsPage />} />
-          <Route path={ROUTES.destinations} element={<DestinationsPage />} />
-          <Route path={ROUTES.about} element={<AboutPage />} />
-          <Route path={ROUTES.contact} element={<ContactPage />} />
-          <Route path={ROUTES.notFound} element={<NotFoundPage />} />
+          {/* Marketing site — header, footer and page transitions. */}
+          <Route element={<SiteChrome />}>
+            <Route path={ROUTES.home} element={<HomePage />} />
+            <Route path={ROUTES.flights} element={<FlightsPage />} />
+            <Route path={ROUTES.destinations} element={<DestinationsPage />} />
+            <Route path={ROUTES.about} element={<AboutPage />} />
+            <Route path={ROUTES.contact} element={<ContactPage />} />
+            <Route path={ROUTES.login} element={<LoginPage />} />
+            <Route path={ROUTES.notFound} element={<NotFoundPage />} />
+          </Route>
+
+          {/* Dashboard — its own shell, gated on role. */}
+          <Route element={<RequireDashboardAccess />}>
+            <Route path={ROUTES.admin} element={<AdminLayout />}>
+              <Route index element={<DashboardPage />} />
+              <Route path="flights" element={<AdminFlightsPage />} />
+              <Route
+                path="flights/:flightId/manifest"
+                element={<AdminManifestPage />}
+              />
+              <Route path="bookings" element={<AdminBookingsPage />} />
+            </Route>
+          </Route>
         </Routes>
       </AnimatePresence>
     </Suspense>
