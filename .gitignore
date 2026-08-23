@@ -38,3 +38,6 @@ server/bootstrap/cache/*.php
 
 # Large image originals — regenerate with `npm run images:fetch`
 client/src/assets/images-src/
+
+.vercel
+.env*

@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
 
-  "//": "The front-end lives in client/. Building from the repository root keeps Vercel working without changing the project's Root Directory setting.",
   "installCommand": "npm --prefix client install",
   "buildCommand": "npm --prefix client run build",
   "outputDirectory": "client/dist",
