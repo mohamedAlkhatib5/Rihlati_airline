@@ -1,0 +1,42 @@
+import { Button, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import { ROUTES } from '../../../app/routes/paths';
+import { SectionTitle } from '../../../shared/components/ui/SectionTitle';
+import { WaveDivider } from '../../../shared/components/ui/WaveDivider';
+import { DestinationGrid } from '../../destinations/components/DestinationGrid';
+import { getFeaturedDestinations } from '../../destinations/data/destinations';
+
+export function PopularDestinationsSection() {
+  const { t } = useTranslation();
+  const featured = getFeaturedDestinations();
+
+  return (
+    <section className="section-space popular-destinations">
+      <WaveDivider position="top" />
+
+      <Container>
+        <SectionTitle
+          eyebrow={t('destinations.homeEyebrow')}
+          title={t('destinations.homeTitle')}
+          text={t('destinations.homeText')}
+        />
+
+        <DestinationGrid destinations={featured} />
+
+        <div className="popular-destinations__cta">
+          <Button
+            as={Link}
+            to={ROUTES.destinations}
+            className="secondary-action"
+          >
+            {t('destinations.exploreAll')}
+          </Button>
+        </div>
+      </Container>
+
+      <WaveDivider position="bottom" />
+    </section>
+  );
+}

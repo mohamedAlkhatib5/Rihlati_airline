@@ -1,0 +1,206 @@
+{
+  "brand": {
+    "name": "Rihlati",
+    "tagline": "Airlines"
+  },
+  "common": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "switchLanguage": "Switch language to Arabic",
+    "languageLabel": "العربية",
+    "bookFlight": "Book a flight",
+    "loading": "Loading",
+    "imageUnavailable": "Image coming soon"
+  },
+  "nav": {
+    "home": "Home",
+    "flights": "Flights",
+    "destinations": "Destinations",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "kicker": "Your world is closer",
+    "titleLine1": "Your journey starts here.",
+    "titleLine2": "Discover the world your way.",
+    "description": "Plan smarter journeys with flexible choices, a clear booking experience, and destinations that inspire every trip.",
+    "exploreFlights": "Explore flights",
+    "viewDestinations": "View destinations",
+    "trust": {
+      "flexible": "Flexible booking",
+      "secure": "Secure booking",
+      "global": "Global destinations"
+    }
+  },
+  "booking": {
+    "eyebrow": "Plan your journey",
+    "title": "Find your next flight",
+    "badge": "Best options daily",
+    "tripType": "Trip type",
+    "roundTrip": "Round trip",
+    "oneWay": "One way",
+    "from": "From",
+    "fromPlaceholder": "Dubai",
+    "to": "To",
+    "toPlaceholder": "London",
+    "departure": "Departure",
+    "returnDate": "Return",
+    "passengers": "Passengers",
+    "passengerCount_one": "{{count}} Passenger",
+    "passengerCount_other": "{{count}} Passengers",
+    "travelClass": "Travel class",
+    "class": {
+      "economy": "Economy",
+      "premium": "Premium Economy",
+      "business": "Business",
+      "first": "First Class"
+    },
+    "submit": "Search flights",
+    "errors": {
+      "from": "Enter the city you are departing from.",
+      "to": "Enter the city you are travelling to.",
+      "sameCity": "Departure and destination cannot be the same city.",
+      "departure": "Choose a departure date.",
+      "departureInPast": "The departure date cannot be in the past.",
+      "returnBeforeDeparture": "The return date must come after the departure date.",
+      "summary": "Please review the highlighted fields."
+    },
+    "success": "Great choice. We are searching flights from {{from}} to {{to}}."
+  },
+  "features": {
+    "eyebrow": "Why Rihlati",
+    "title": "Travel made simpler and more memorable",
+    "description": "Every detail is designed to make planning your journey clearer, calmer, and more enjoyable.",
+    "confident": {
+      "title": "Confident planning",
+      "text": "Clear choices and helpful details make every travel decision easier."
+    },
+    "flexible": {
+      "title": "Flexible booking",
+      "text": "Compare routes and choose the plan that fits your time and budget."
+    },
+    "support": {
+      "title": "Travel support",
+      "text": "Useful guidance before, during, and after your journey."
+    }
+  },
+  "destinations": {
+    "homeEyebrow": "Popular routes",
+    "homeTitle": "Destinations worth discovering",
+    "homeText": "From iconic cities to peaceful island escapes, your next story starts here.",
+    "exploreAll": "Explore all destinations",
+    "heroEyebrow": "Explore the world",
+    "heroTitle": "Beautiful places are waiting",
+    "heroText": "Choose a city, beach, or cultural escape and start planning your next adventure.",
+    "sectionEyebrow": "Our network",
+    "sectionTitle": "Featured destinations",
+    "sectionText": "A curated collection of inspiring routes for every kind of traveler.",
+    "popular": "Popular",
+    "priceFrom": "from",
+    "bookNow": "Book now",
+    "empty": "No destinations available right now."
+  },
+  "experience": {
+    "eyebrow": "Above the clouds",
+    "title": "Plan a better travel experience",
+    "text": "Discover curated destinations and clear guidance that help you arrive ready for what comes next.",
+    "imageAlt": "Airplane wing above the clouds",
+    "statValue": "120+",
+    "statLabel": "global routes",
+    "checks": {
+      "budgets": "Choices for different budgets",
+      "details": "Clear, organized travel details",
+      "devices": "A smooth experience on every device"
+    },
+    "cta": "Discover our story"
+  },
+  "newsletter": {
+    "eyebrow": "Stay inspired",
+    "title": "Receive destination news and selected offers",
+    "emailLabel": "Email address",
+    "placeholder": "Enter your email address",
+    "submit": "Subscribe",
+    "success": "Thank you. You are now subscribed to Rihlati updates.",
+    "invalid": "Enter a valid email address."
+  },
+  "flights": {
+    "heroEyebrow": "Book with confidence",
+    "heroTitle": "Find the flight that fits your journey",
+    "heroText": "Choose your route, travel date, and cabin in a few simple steps."
+  },
+  "about": {
+    "heroEyebrow": "About Rihlati",
+    "heroTitle": "Connecting people to the world through better planning",
+    "heroText": "We believe every journey should feel clear, comfortable, and full of possibility.",
+    "eyebrow": "Our vision",
+    "title": "Modern travel with a human touch",
+    "text": "Rihlati is a fictional travel brand created as a polished React portfolio project with a clear identity, reusable components, and responsive layouts.",
+    "imageAlt": "Modern airplane in flight",
+    "values": {
+      "global": {
+        "title": "Global outlook",
+        "text": "Destinations designed around inspiring connections."
+      },
+      "care": {
+        "title": "Genuine care",
+        "text": "An experience that feels warm, calm, and personal."
+      },
+      "simple": {
+        "title": "Simple experience",
+        "text": "Fast navigation and clear information at every step."
+      }
+    }
+  },
+  "contact": {
+    "heroEyebrow": "We are here to help",
+    "heroTitle": "Talk to the Rihlati team",
+    "heroText": "Send a question about bookings, destinations, or travel assistance.",
+    "eyebrow": "Contact us",
+    "title": "Let us make your journey easier",
+    "text": "Our team is ready to help with your travel questions.",
+    "callUs": "Call us",
+    "email": "Email",
+    "office": "Office",
+    "officeValue": "Dubai, United Arab Emirates",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email address",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "message": "Message",
+      "messagePlaceholder": "Write your message",
+      "submit": "Send message",
+      "success": "Thank you. Your message has been sent successfully.",
+      "errors": {
+        "name": "Enter your full name.",
+        "email": "Enter a valid email address.",
+        "subject": "Add a short subject.",
+        "message": "Write a message of at least 10 characters."
+      }
+    }
+  },
+  "notFound": {
+    "code": "404",
+    "title": "This route is not available",
+    "text": "Return to the homepage and continue exploring.",
+    "cta": "Back to home"
+  },
+  "footer": {
+    "tagline": "Thoughtful journeys, inspiring destinations, and a simpler way to discover the world.",
+    "company": "Company",
+    "aboutUs": "About us",
+    "travel": "Travel",
+    "services": "Travel services",
+    "offers": "Offers",
+    "follow": "Follow the journey",
+    "rights": "© {{year}} Rihlati. React demo project."
+  },
+  "errors": {
+    "boundaryTitle": "Something went wrong",
+    "boundaryText": "The page could not be displayed. Try reloading, or return to the homepage.",
+    "reload": "Reload page",
+    "home": "Back to home"
+  }
+}

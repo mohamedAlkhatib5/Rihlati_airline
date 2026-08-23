@@ -1,0 +1,15 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+}
+
+/* The main landmark is focusable for skip-link and route-change focus, but it
+   is not an interactive control, so it should not paint a focus ring. */
+.app-main:focus {
+  outline: none;
+}

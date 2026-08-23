@@ -1,0 +1,105 @@
+/* =============================================================================
+   Design tokens
+   The single source of truth for colour, type, spacing, elevation and motion.
+   Nothing in the app should hard-code a raw value that belongs here.
+   ========================================================================== */
+
+:root {
+  /* --- Brand palette ----------------------------------------------------- */
+  --brand-50: #eef8ff;
+  --brand-100: #dff2ff;
+  --brand-200: #b7d9f7;
+  --brand-300: #78d9ff;
+  --brand-400: #28a9ff;
+  --brand-500: #0b72e7;
+  --brand-600: #0751a8;
+  --brand-700: #043f85;
+  --accent-400: #25b6d9;
+
+  --navy-900: #06213f;
+  --navy-800: #031d39;
+  --navy-700: #032d52;
+
+  /* --- Semantic colour --------------------------------------------------- */
+  --color-primary: var(--brand-500);
+  --color-primary-strong: var(--brand-600);
+  --color-primary-soft: var(--brand-50);
+  --color-heading: var(--navy-900);
+  --color-text: #26374b;
+  --color-muted: #6f8298;
+  --color-surface: #ffffff;
+  --color-surface-soft: #fbfdff;
+  --color-border: #dce9f5;
+  --color-border-strong: #bcdcf7;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: rgba(255, 255, 255, 0.72);
+
+  --color-success: #1f7a4d;
+  --color-warning: #a25b06;
+  --color-danger: #b3261e;
+
+  /* --- Typography -------------------------------------------------------- */
+  --font-latin: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --font-body: var(--font-latin);
+
+  --text-xs: 0.78rem;
+  --text-sm: 0.9rem;
+  --text-base: 1rem;
+  --text-lg: 1.1rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.55rem;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 650;
+  --font-weight-bold: 750;
+  --font-weight-black: 850;
+  --leading-body: 1.75;
+  --leading-tight: 1.15;
+
+  /* --- Spacing scale ----------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --section-padding: 108px;
+  --section-padding-sm: 84px;
+
+  /* --- Radii ------------------------------------------------------------- */
+  --radius-sm: 10px;
+  --radius-md: 13px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 30px;
+  --radius-pill: 999px;
+
+  /* --- Elevation --------------------------------------------------------- */
+  --shadow-sm: 0 8px 20px rgba(11, 114, 231, 0.18);
+  --shadow-md: 0 14px 38px rgba(19, 75, 123, 0.08);
+  --shadow-lg: 0 22px 65px rgba(18, 72, 126, 0.14);
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 0.2s;
+  --duration-base: 0.28s;
+  --duration-slow: 0.65s;
+
+  /* --- Layering ---------------------------------------------------------- */
+  --z-hero-overlay: 1;
+  --z-hero-clouds: 2;
+  --z-hero-content: 5;
+  --z-booking-panel: 7;
+  --z-header: 1030;
+  --z-skip-link: 2000;
+
+  /* --- Focus ring -------------------------------------------------------- */
+  --focus-ring: 0 0 0 3px rgba(40, 169, 255, 0.45);
+  --focus-outline: 3px solid var(--brand-400);
+}
+
+html[dir='rtl'] {
+  --font-body: var(--font-arabic);
+}

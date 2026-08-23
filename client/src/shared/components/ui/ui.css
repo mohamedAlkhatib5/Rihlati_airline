@@ -1,0 +1,202 @@
+/* =============================================================================
+   Shared UI primitives: headings, buttons, form feedback, dividers, loaders.
+   ========================================================================== */
+
+/* --- Section title --------------------------------------------------------- */
+.section-title {
+  max-width: 720px;
+  margin-bottom: 3.25rem;
+}
+
+.section-title--centered {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-title h2 {
+  color: var(--color-heading);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: var(--font-weight-black);
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+html[dir='rtl'] .section-title h2 {
+  letter-spacing: 0;
+}
+
+.section-title p {
+  margin: var(--space-4) 0 0;
+  color: var(--color-muted);
+  font-size: 1.04rem;
+}
+
+/* --- Buttons --------------------------------------------------------------- */
+.primary-action,
+.secondary-action,
+.ghost-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Spacing between an icon and its label, in either writing direction. */
+  gap: 0.5rem;
+  border-radius: 14px;
+  padding: 0.88rem 1.45rem;
+  font-weight: var(--font-weight-bold);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.primary-action {
+  border: 0;
+  color: var(--color-on-dark);
+  background: linear-gradient(135deg, var(--brand-500), var(--brand-400));
+  box-shadow: 0 10px 24px rgba(11, 114, 231, 0.22);
+}
+
+.primary-action:hover,
+.primary-action:focus-visible {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--brand-600), var(--brand-500));
+  box-shadow: 0 15px 30px rgba(11, 114, 231, 0.3);
+}
+
+.secondary-action {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.secondary-action:hover,
+.secondary-action:focus-visible {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  border-color: var(--brand-200);
+  transform: translateY(-3px);
+}
+
+.ghost-action {
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: var(--color-on-dark);
+}
+
+.ghost-action:hover,
+.ghost-action:focus-visible {
+  transform: translateY(-3px);
+  background: var(--color-surface);
+  color: var(--color-heading);
+}
+
+/* --- Form feedback --------------------------------------------------------- */
+.form-field__error {
+  margin: 0.35rem 0 0;
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.status-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: var(--space-4) 0 0;
+  padding: 0.85rem 1.05rem;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.6;
+}
+
+.status-message svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.status-message--success {
+  background: #e8f6ee;
+  color: var(--color-success);
+}
+
+.status-message--error {
+  background: #fdeceb;
+  color: var(--color-danger);
+}
+
+/* --- Wave divider ---------------------------------------------------------- */
+.wave-divider {
+  position: absolute;
+  inset-inline: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
+
+.wave-divider path {
+  fill: var(--wave-fill, var(--color-surface));
+}
+
+.wave-divider--top {
+  top: 0;
+}
+
+.wave-divider--bottom {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+@media (max-width: 767.98px) {
+  .wave-divider svg {
+    height: 70px;
+  }
+}
+
+/* --- Page loader -----------------------------------------------------------
+   Rarely seen: route chunks are prefetched while the browser is idle. When it
+   does appear it paints the brand gradient rather than a bare white screen. */
+.page-loader {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--navy-800), var(--brand-600));
+}
+
+.page-loader__spinner {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top-color: var(--color-on-dark);
+  animation: page-loader-spin 0.8s linear infinite;
+}
+
+@keyframes page-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Image placeholder ------------------------------------------------------ */
+.image-placeholder {
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--brand-50), var(--brand-100));
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}

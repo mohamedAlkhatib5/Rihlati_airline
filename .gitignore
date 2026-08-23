@@ -23,3 +23,6 @@ pnpm-debug.log*
 # System files
 .DS_Store
 Thumbs.db
+# Build & tooling
+client/dist/
+.env

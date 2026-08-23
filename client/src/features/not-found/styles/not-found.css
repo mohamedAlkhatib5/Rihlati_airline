@@ -1,0 +1,35 @@
+.not-found {
+  display: grid;
+  place-items: center;
+  min-height: 78vh;
+  padding: 170px 0 110px;
+  background: linear-gradient(180deg, var(--brand-50), var(--color-surface));
+}
+
+.not-found svg {
+  color: var(--color-primary);
+  opacity: 0.55;
+  margin-inline: auto;
+}
+
+.not-found__code {
+  margin: var(--space-4) 0 0;
+  color: var(--color-primary);
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: 880;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.not-found h1 {
+  margin: var(--space-2) 0 0;
+  color: var(--color-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: var(--font-weight-black);
+}
+
+.not-found__text {
+  max-width: 46ch;
+  margin: var(--space-3) auto var(--space-5);
+  color: var(--color-muted);
+}

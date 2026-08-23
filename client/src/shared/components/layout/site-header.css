@@ -1,0 +1,329 @@
+/* =============================================================================
+   Site header: transparent over the hero, solid once the page scrolls.
+   ========================================================================== */
+
+.site-header {
+  padding: 1.05rem 0;
+  background: transparent;
+  transition:
+    padding var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.site-header--scrolled {
+  padding: 0.68rem 0;
+  background: rgba(3, 29, 57, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+.site-header__container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.site-header__brand {
+  padding: 0;
+  margin: 0;
+}
+
+/* --- Navigation links ------------------------------------------------------ */
+.site-header__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-item {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.25rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.02rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+/* Soft pill that fades in behind the label. */
+.nav-link-item::before {
+  content: '';
+  position: absolute;
+  inset: 0.3rem 0.35rem;
+  z-index: -1;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: scale(0.86);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+/* Tapered underline that grows out from the centre. */
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.1rem;
+  width: 0;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--brand-300) 30%,
+    #ffffff 50%,
+    var(--brand-300) 70%,
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(120, 217, 255, 0.6);
+  transform: translateX(-50%);
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.nav-link-item:hover,
+.nav-link-item:focus-visible {
+  color: var(--color-on-dark);
+}
+
+.nav-link-item:hover::before,
+.nav-link-item:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-link-item:hover::after {
+  width: 46%;
+}
+
+.nav-link-item--active {
+  color: var(--color-on-dark);
+  font-weight: var(--font-weight-black);
+}
+
+.nav-link-item--active::after {
+  width: 62%;
+}
+
+/* --- Action buttons -------------------------------------------------------- */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.language-button,
+.book-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 46px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.language-button {
+  padding: 0.68rem 0.95rem;
+  background: transparent;
+  color: var(--color-on-dark);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.language-button:hover,
+.language-button:focus-visible,
+.language-button:active {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--color-on-dark);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-3px);
+}
+
+.book-button {
+  padding: 0.72rem 1.1rem;
+  border: 0;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-black);
+}
+
+.book-button:hover,
+.book-button:focus-visible,
+.book-button:active {
+  background: var(--brand-100);
+  color: var(--color-primary-strong);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(21, 141, 222, 0.28);
+}
+
+/* --- Toggle ---------------------------------------------------------------- */
+.site-header .navbar-toggler {
+  margin-inline-start: auto;
+  padding: 0.5rem 0.65rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* =============================================================================
+   Desktop: brand | centred links | actions
+   ========================================================================== */
+@media (min-width: 992px) {
+  /* Bootstrap collapses a responsive off-canvas to `flex-grow: 0` above its
+     breakpoint; let it fill the bar so links can centre and actions sit at the
+     end. Two classes beat Bootstrap's single class without `!important`. */
+  .site-header__panel {
+    flex: 1;
+  }
+
+  .site-header__panel .offcanvas-body {
+    flex-grow: 1;
+  }
+
+  .site-header__body {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .site-header__links {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.28rem;
+    white-space: nowrap;
+  }
+
+  .site-header__actions {
+    margin-inline-start: auto;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .nav-link-item {
+    padding: 0.75rem 0.7rem;
+    font-size: 0.96rem;
+  }
+
+  .site-header__actions {
+    gap: 0.45rem;
+  }
+}
+
+/* =============================================================================
+   Mobile: solid bar + off-canvas panel
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .site-header {
+    padding: 0.75rem 0;
+    background: rgba(3, 29, 57, 0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .site-header--scrolled {
+    padding: 0.6rem 0;
+  }
+
+  .site-header__panel .offcanvas-header {
+    padding: 1.25rem;
+  }
+
+  .site-header__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: 0 1.25rem 2rem;
+  }
+
+  .site-header__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .site-header__links li {
+    display: block;
+  }
+
+  .nav-link-item {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.85rem 0.25rem;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Inside the panel the pill has no dark surface to sit on. */
+  .nav-link-item::before {
+    display: none;
+  }
+
+  .nav-link-item::after {
+    inset-inline-start: 0;
+    bottom: -1px;
+    background: var(--color-primary);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .nav-link-item:hover,
+  .nav-link-item--active {
+    color: var(--color-primary);
+  }
+
+  .nav-link-item:hover::after,
+  .nav-link-item--active::after {
+    width: 100%;
+  }
+
+  .site-header__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .language-button,
+  .book-button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .language-button {
+    color: var(--color-primary);
+    border-color: var(--color-border);
+  }
+
+  .language-button:hover,
+  .language-button:focus-visible,
+  .language-button:active {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-strong);
+    border-color: var(--color-primary);
+  }
+
+  .book-button {
+    background: var(--color-primary);
+    color: var(--color-on-dark);
+  }
+
+  .book-button:hover,
+  .book-button:focus-visible,
+  .book-button:active {
+    background: var(--color-primary-strong);
+    color: var(--color-on-dark);
+  }
+}

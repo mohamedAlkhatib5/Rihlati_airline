@@ -1,0 +1,34 @@
+{
+  "clouds-decor": {
+    "width": 749,
+    "height": 328
+  },
+  "clouds-sky": {
+    "width": 3264,
+    "height": 2448
+  },
+  "dubai": {
+    "width": 3840,
+    "height": 2560
+  },
+  "hero-airplane": {
+    "width": 1280,
+    "height": 915
+  },
+  "istanbul": {
+    "width": 4275,
+    "height": 2196
+  },
+  "london": {
+    "width": 2048,
+    "height": 3216
+  },
+  "maldives": {
+    "width": 1024,
+    "height": 681
+  },
+  "paris": {
+    "width": 2900,
+    "height": 5367
+  }
+}
