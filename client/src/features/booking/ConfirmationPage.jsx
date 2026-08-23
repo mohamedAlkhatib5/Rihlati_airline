@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { CircleCheckBig, Mail, Printer, TicketCheck } from 'lucide-react';
 import { Container } from 'react-bootstrap';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  useLocation,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -22,13 +27,15 @@ export default function ConfirmationPage() {
   const { language } = useLanguage();
   const { pnr } = useParams();
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   useDocumentTitle('bookingFlow.confirmedTitle');
 
-  // The booking arrives in navigation state straight after payment; a direct
-  // visit or a reload falls back to fetching it with the contact email.
+  // The booking arrives in navigation state straight after payment. A reload
+  // or a shared link has no state, so `?email=` is accepted as a fallback —
+  // the API still requires the reference and email to match.
   const [booking, setBooking] = useState(location.state?.booking ?? null);
   const [error, setError] = useState(null);
-  const email = location.state?.email;
+  const email = location.state?.email ?? searchParams.get('email');
 
   useEffect(() => {
     if (booking || !email) return;
