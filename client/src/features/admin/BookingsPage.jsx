@@ -7,7 +7,7 @@ import { useDocumentTitle } from '../../shared/hooks/useDocumentTitle';
 import { useLanguage } from '../../i18n/useLanguage';
 import { AdminPanel } from './components/AdminPanel';
 import { AdminStateBlock } from './components/AdminStateBlock';
-import { useApiResource } from './hooks/useApiResource';
+import { useApiResource } from '../../shared/hooks/useApiResource';
 
 const STATUS_TONES = {
   confirmed: 'good',

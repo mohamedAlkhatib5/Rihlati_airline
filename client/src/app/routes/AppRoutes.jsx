@@ -17,6 +17,10 @@ import HomePage from '../../features/home/HomePage';
 
 const FlightsPage = lazy(routeLoaders[ROUTES.flights]);
 const DestinationsPage = lazy(routeLoaders[ROUTES.destinations]);
+const OffersPage = lazy(routeLoaders[ROUTES.offers]);
+const BookingPage = lazy(routeLoaders[ROUTES.booking]);
+const ConfirmationPage = lazy(routeLoaders[ROUTES.confirmation]);
+const ManageBookingPage = lazy(routeLoaders[ROUTES.manageBooking]);
 const AboutPage = lazy(routeLoaders[ROUTES.about]);
 const ContactPage = lazy(routeLoaders[ROUTES.contact]);
 const LoginPage = lazy(routeLoaders[ROUTES.login]);
@@ -39,11 +43,18 @@ export function AppRoutes() {
     <Suspense fallback={<PageLoader />}>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          {/* Marketing site — header, footer and page transitions. */}
+          {/* Marketing and booking — header, footer and page transitions. */}
           <Route element={<SiteChrome />}>
             <Route path={ROUTES.home} element={<HomePage />} />
             <Route path={ROUTES.flights} element={<FlightsPage />} />
             <Route path={ROUTES.destinations} element={<DestinationsPage />} />
+            <Route path={ROUTES.offers} element={<OffersPage />} />
+            <Route path={ROUTES.booking} element={<BookingPage />} />
+            <Route path={ROUTES.confirmation} element={<ConfirmationPage />} />
+            <Route
+              path={ROUTES.manageBooking}
+              element={<ManageBookingPage />}
+            />
             <Route path={ROUTES.about} element={<AboutPage />} />
             <Route path={ROUTES.contact} element={<ContactPage />} />
             <Route path={ROUTES.login} element={<LoginPage />} />

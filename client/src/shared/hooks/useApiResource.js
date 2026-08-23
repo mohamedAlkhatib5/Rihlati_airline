@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { api } from '../../../shared/lib/apiClient';
+import { api } from '../lib/apiClient';
 
 /**
  * Fetches a read-only API resource and tracks its loading and error state.

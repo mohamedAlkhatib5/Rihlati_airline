@@ -60,10 +60,16 @@ class BookingService
                 'currency' => 'USD',
             ]);
 
-            $this->addSegment($booking, $outbound, 'outbound', $input['passengers']);
+            $this->addSegment(
+                $booking, $outbound, 'outbound',
+                $input['passengers'], $input['seats']['outbound'] ?? []
+            );
 
             if ($return) {
-                $this->addSegment($booking, $return, 'return', $input['passengers']);
+                $this->addSegment(
+                    $booking, $return, 'return',
+                    $input['passengers'], $input['seats']['return'] ?? []
+                );
             }
 
             $this->recordPayment($booking, $input['payment'] ?? []);
@@ -131,8 +137,17 @@ class BookingService
         return [$offer, $offer->discountFor($subtotal)];
     }
 
-    private function addSegment(Booking $booking, FareClass $fare, string $direction, array $people): void
-    {
+    /**
+     * @param  list<string|null>  $chosenSeats  Seats picked by the traveller,
+     *                                          indexed to match `$people`.
+     */
+    private function addSegment(
+        Booking $booking,
+        FareClass $fare,
+        string $direction,
+        array $people,
+        array $chosenSeats = [],
+    ): void {
         $segment = BookingSegment::create([
             'booking_id' => $booking->id,
             'flight_id' => $fare->flight_id,
@@ -140,7 +155,7 @@ class BookingService
             'direction' => $direction,
         ]);
 
-        $seats = $this->seats->allocate($fare->flight, $fare->cabin, count($people));
+        $seats = $this->resolveSeats($fare, $direction, count($people), $chosenSeats);
 
         foreach ($people as $index => $person) {
             Passenger::create([
@@ -155,6 +170,48 @@ class BookingService
                 'seat_number' => $seats[$index] ?? null,
             ]);
         }
+    }
+
+    /**
+     * Honours the traveller's seat choices, falling back to the allocator.
+     *
+     * Chosen seats are re-checked here rather than trusted from the client: the
+     * seat map the browser rendered may be seconds out of date.
+     *
+     * @return list<string|null>
+     */
+    private function resolveSeats(
+        FareClass $fare,
+        string $direction,
+        int $passengerCount,
+        array $chosenSeats,
+    ): array {
+        $chosen = array_values(array_filter($chosenSeats));
+
+        if ($chosen === []) {
+            return $this->seats->allocate($fare->flight, $fare->cabin, $passengerCount);
+        }
+
+        if (count(array_unique($chosen)) !== count($chosen)) {
+            throw ValidationException::withMessages([
+                "seats.{$direction}" => 'Each traveller needs a different seat.',
+            ]);
+        }
+
+        $taken = array_intersect($chosen, $this->seats->occupiedSeats($fare->flight_id));
+
+        if ($taken !== []) {
+            throw ValidationException::withMessages([
+                "seats.{$direction}" => 'Seat '.implode(', ', $taken)
+                    .' was just taken. Please choose another.',
+            ]);
+        }
+
+        return array_pad(
+            array_slice($chosen, 0, $passengerCount),
+            $passengerCount,
+            null
+        );
     }
 
     /**

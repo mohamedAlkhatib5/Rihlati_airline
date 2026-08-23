@@ -5,15 +5,19 @@ import { useTranslation } from 'react-i18next';
 
 import { SECTIONS } from '../../../app/routes/paths';
 import { StatusMessage } from '../../../shared/components/ui/StatusMessage';
+import { api } from '../../../shared/lib/apiClient';
+import { useLanguage } from '../../../i18n/useLanguage';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function NewsletterSection() {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!EMAIL_PATTERN.test(email.trim())) {
@@ -21,9 +25,20 @@ export function NewsletterSection() {
       return;
     }
 
-    // Replaced by the newsletter API call in a later phase.
-    setStatus({ type: 'success', message: t('newsletter.success') });
-    setEmail('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await api.post('/newsletter', {
+        email: email.trim(),
+        locale: language,
+      });
+      setStatus({ type: 'success', message: response.message });
+      setEmail('');
+    } catch (caught) {
+      setStatus({ type: 'error', message: caught.message });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -64,7 +79,9 @@ export function NewsletterSection() {
                 placeholder={t('newsletter.placeholder')}
                 autoComplete="email"
               />
-              <button type="submit">{t('newsletter.submit')}</button>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? t('common.loading') : t('newsletter.submit')}
+              </button>
             </form>
 
             <AnimatePresence>

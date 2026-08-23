@@ -35,6 +35,12 @@ class BookingController extends Controller
             'passengers.*.type' => ['nullable', 'in:adult,child,infant'],
             'passengers.*.passportNumber' => ['nullable', 'string', 'max:20'],
             'passengers.*.dateOfBirth' => ['nullable', 'date', 'before:today'],
+            // Chosen seats, indexed to match the passenger order. Omit to let
+            // the allocator assign them.
+            'seats.outbound' => ['nullable', 'array'],
+            'seats.outbound.*' => ['nullable', 'string', 'max:4'],
+            'seats.return' => ['nullable', 'array'],
+            'seats.return.*' => ['nullable', 'string', 'max:4'],
             'payment.method' => ['nullable', 'in:card,wallet,transfer'],
             'payment.cardBrand' => ['nullable', 'string', 'max:20'],
             'payment.cardLast4' => ['nullable', 'digits:4'],

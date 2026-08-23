@@ -1,0 +1,123 @@
+.lookup-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: end;
+  gap: var(--space-3);
+  max-width: 860px;
+  margin-inline: auto;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.lookup-form .form-label {
+  color: var(--color-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.lookup-form .form-control {
+  min-height: 50px;
+  border-radius: var(--radius-md);
+  border-color: var(--color-border);
+  background: var(--color-surface-soft);
+  letter-spacing: 0.04em;
+}
+
+.lookup-form .primary-action {
+  min-height: 50px;
+}
+
+.lookup-status {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.lookup-result {
+  max-width: 860px;
+  margin: var(--space-6) auto 0;
+}
+
+.lookup-result__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
+.danger-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.35rem;
+  border: 1px solid #e9bcc5;
+  border-radius: 14px;
+  background: #fbeaee;
+  color: var(--color-danger);
+  font-weight: var(--font-weight-bold);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.danger-action:hover:not(:disabled) {
+  background: #f6d6dd;
+  transform: translateY(-2px);
+}
+
+.danger-action:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Confirmation panel ----------------------------------------------------- */
+.confirm-panel-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: rgba(6, 33, 63, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.confirm-panel {
+  width: min(100%, 420px);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.confirm-panel__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto var(--space-3);
+  border-radius: 50%;
+  background: #fbeaee;
+  color: var(--color-danger);
+}
+
+.confirm-panel h2 {
+  margin: 0 0 0.5rem;
+  color: var(--color-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-black);
+}
+
+.confirm-panel p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.confirm-panel__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: var(--space-5);
+}

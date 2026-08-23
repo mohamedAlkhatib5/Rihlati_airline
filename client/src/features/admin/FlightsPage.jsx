@@ -13,7 +13,7 @@ import { AdminPanel } from './components/AdminPanel';
 import { AdminStateBlock } from './components/AdminStateBlock';
 import { FlightFormModal } from './components/FlightFormModal';
 import { ConfirmDialog } from './components/ConfirmDialog';
-import { useApiResource } from './hooks/useApiResource';
+import { useApiResource } from '../../shared/hooks/useApiResource';
 
 const formatTime = (value) =>
   new Date(value).toLocaleString(undefined, {

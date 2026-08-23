@@ -3,7 +3,7 @@ import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { ROUTES } from '../../../app/routes/paths';
+import { ROUTES, hasDarkHero } from '../../../app/routes/paths';
 import { prefetchRoute } from '../../../app/routes/routeLoaders';
 import { PRIMARY_NAV } from '../../constants/navigation';
 import { useIsScrolled } from '../../hooks/useIsScrolled';
@@ -22,6 +22,9 @@ export function SiteHeader() {
   const isScrolled = useIsScrolled(24);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Pages without a dark hero need the solid bar from the first pixel.
+  const isSolid = isScrolled || !hasDarkHero(pathname);
+
   // Close the mobile menu whenever navigation happens.
   useEffect(() => {
     setIsMenuOpen(false);
@@ -33,7 +36,7 @@ export function SiteHeader() {
       fixed="top"
       expanded={isMenuOpen}
       onToggle={setIsMenuOpen}
-      className={cx('site-header', isScrolled && 'site-header--scrolled')}
+      className={cx('site-header', isSolid && 'site-header--scrolled')}
     >
       <Container className="site-header__container">
         <Navbar.Brand

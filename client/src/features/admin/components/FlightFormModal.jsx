@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { api } from '../../../shared/lib/apiClient';
-import { useApiResource } from '../hooks/useApiResource';
+import { useApiResource } from '../../../shared/hooks/useApiResource';
 
 /** `datetime-local` needs `YYYY-MM-DDTHH:mm` with no zone. */
 const toInputValue = (value) => (value ? value.slice(0, 16) : '');

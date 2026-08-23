@@ -6,11 +6,11 @@ import { ROUTES } from '../../../app/routes/paths';
 import { SectionTitle } from '../../../shared/components/ui/SectionTitle';
 import { WaveDivider } from '../../../shared/components/ui/WaveDivider';
 import { DestinationGrid } from '../../destinations/components/DestinationGrid';
-import { getFeaturedDestinations } from '../../destinations/data/destinations';
+import { useDestinations } from '../../destinations/hooks/useDestinations';
 
 export function PopularDestinationsSection() {
   const { t } = useTranslation();
-  const featured = getFeaturedDestinations();
+  const { destinations, isLoading } = useDestinations({ featured: true });
 
   return (
     <section className="section-space popular-destinations">
@@ -23,7 +23,7 @@ export function PopularDestinationsSection() {
           text={t('destinations.homeText')}
         />
 
-        <DestinationGrid destinations={featured} />
+        <DestinationGrid destinations={destinations} isLoading={isLoading} />
 
         <div className="popular-destinations__cta">
           <Button

@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './shared/styles/tokens.css';
 import './shared/styles/base.css';
 import './shared/components/ui/ui.css';
+import './shared/components/ui/states.css';
 
 import App from './app/App';
 import { AppProviders } from './app/providers/AppProviders';

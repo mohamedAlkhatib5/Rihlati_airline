@@ -18,7 +18,7 @@ import { RevenueChart } from './components/charts/RevenueChart';
 import { StatTile } from './components/StatTile';
 import { AdminPanel } from './components/AdminPanel';
 import { AdminStateBlock } from './components/AdminStateBlock';
-import { useApiResource } from './hooks/useApiResource';
+import { useApiResource } from '../../shared/hooks/useApiResource';
 
 /** Status tones map to the validated status palette in admin.css. */
 const STATUS_TONES = {

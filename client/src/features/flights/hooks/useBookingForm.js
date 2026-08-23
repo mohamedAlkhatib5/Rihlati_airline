@@ -1,18 +1,27 @@
 import { useCallback, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { ROUTES } from '../../../app/routes/paths';
 import { todayAsInputValue } from '../../../shared/lib/format';
 import { INITIAL_BOOKING_FORM } from '../constants/bookingOptions';
 
 /**
  * State, validation and submission for the flight search form.
  *
- * Keeping this out of the component makes the rules testable on their own and
- * leaves `<BookingForm>` responsible only for rendering.
+ * On success it navigates to the flights page with the search in the query
+ * string, so results are shareable and survive a reload.
+ *
+ * @param {object} [initialValues] Pre-fills the form from the current URL.
  */
-export function useBookingForm() {
+export function useBookingForm(initialValues) {
   const { t } = useTranslation();
-  const [values, setValues] = useState(INITIAL_BOOKING_FORM);
+  const navigate = useNavigate();
+
+  const [values, setValues] = useState(() => ({
+    ...INITIAL_BOOKING_FORM,
+    ...initialValues,
+  }));
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
 
@@ -78,16 +87,23 @@ export function useBookingForm() {
         return;
       }
 
-      // Replaced by a call to the flight-search API in a later phase.
-      setStatus({
-        type: 'success',
-        message: t('booking.success', {
-          from: values.from.trim(),
-          to: values.to.trim(),
-        }),
+      setStatus(null);
+
+      const query = new URLSearchParams({
+        from: values.from.trim(),
+        to: values.to.trim(),
+        departure: values.departure,
+        passengers: values.passengers,
+        cabin: values.travelClass,
       });
+
+      if (isRoundTrip && values.returnDate) {
+        query.set('returnDate', values.returnDate);
+      }
+
+      navigate(`${ROUTES.flights}?${query}`);
     },
-    [validate, values, t],
+    [validate, values, isRoundTrip, navigate, t],
   );
 
   return {

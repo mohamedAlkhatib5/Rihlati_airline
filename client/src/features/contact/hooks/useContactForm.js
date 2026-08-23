@@ -1,16 +1,24 @@
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { api } from '../../../shared/lib/apiClient';
+
 const INITIAL_VALUES = { name: '', email: '', subject: '', message: '' };
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MIN_MESSAGE_LENGTH = 10;
 
-/** State and validation for the contact form, kept out of the view layer. */
+/**
+ * State, validation and submission for the contact form.
+ *
+ * Validates locally for instant feedback, then submits to the API — which
+ * validates again, because a browser check is a convenience, not a guarantee.
+ */
 export function useContactForm() {
   const { t } = useTranslation();
   const [values, setValues] = useState(INITIAL_VALUES);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateField = useCallback((event) => {
     const { name, value } = event.target;
@@ -42,7 +50,7 @@ export function useContactForm() {
   }, [values, t]);
 
   const handleSubmit = useCallback(
-    (event) => {
+    async (event) => {
       event.preventDefault();
       const nextErrors = validate();
       setErrors(nextErrors);
@@ -52,12 +60,34 @@ export function useContactForm() {
         return;
       }
 
-      // Replaced by a POST to /api/v1/contact in a later phase.
-      setStatus({ type: 'success', message: t('contact.form.success') });
-      setValues(INITIAL_VALUES);
+      setIsSubmitting(true);
+
+      try {
+        const response = await api.post('/contact', {
+          name: values.name.trim(),
+          email: values.email.trim(),
+          subject: values.subject.trim(),
+          message: values.message.trim(),
+        });
+
+        setStatus({ type: 'success', message: response.message });
+        setValues(INITIAL_VALUES);
+      } catch (caught) {
+        setErrors(
+          Object.fromEntries(
+            Object.entries(caught.errors ?? {}).map(([key, value]) => [
+              key,
+              value[0],
+            ]),
+          ),
+        );
+        setStatus({ type: 'error', message: caught.message });
+      } finally {
+        setIsSubmitting(false);
+      }
     },
-    [validate, t],
+    [validate, values],
   );
 
-  return { values, errors, status, updateField, handleSubmit };
+  return { values, errors, status, isSubmitting, updateField, handleSubmit };
 }

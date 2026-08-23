@@ -6,11 +6,12 @@ import { PageTransition } from '../../shared/components/layout/PageTransition';
 import { SectionTitle } from '../../shared/components/ui/SectionTitle';
 import { useDocumentTitle } from '../../shared/hooks/useDocumentTitle';
 import { DestinationGrid } from './components/DestinationGrid';
-import { destinations } from './data/destinations';
+import { useDestinations } from './hooks/useDestinations';
 import './styles/destinations.css';
 
 export default function DestinationsPage() {
   const { t } = useTranslation();
+  const { destinations, isLoading } = useDestinations();
   useDocumentTitle('nav.destinations', 'destinations.heroText');
 
   return (
@@ -29,7 +30,7 @@ export default function DestinationsPage() {
             title={t('destinations.sectionTitle')}
             text={t('destinations.sectionText')}
           />
-          <DestinationGrid destinations={destinations} />
+          <DestinationGrid destinations={destinations} isLoading={isLoading} />
         </Container>
       </section>
     </PageTransition>

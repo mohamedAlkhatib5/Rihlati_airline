@@ -22,6 +22,7 @@ class BookingResource extends JsonResource
             'createdAt' => $this->created_at?->toIso8601String(),
             'offerCode' => $this->whenLoaded('offer', fn () => $this->offer?->code),
             'segments' => $this->whenLoaded('segments', fn () => $this->segments->map(fn ($segment) => [
+                'id' => $segment->id,
                 'direction' => $segment->direction,
                 'cabin' => $segment->fareClass?->cabin,
                 'flight' => new FlightResource($segment->flight),

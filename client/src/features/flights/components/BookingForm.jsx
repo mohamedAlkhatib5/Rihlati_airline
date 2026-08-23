@@ -19,7 +19,7 @@ import { useBookingForm } from '../hooks/useBookingForm';
  * Every control is wrapped in `<FormField>`, which supplies the matching
  * `id`/`for` pair plus `aria-invalid` and `aria-describedby` wiring.
  */
-export function BookingForm({ compact = false }) {
+export function BookingForm({ compact = false, initialValues }) {
   const { t } = useTranslation();
   const {
     values,
@@ -30,7 +30,17 @@ export function BookingForm({ compact = false }) {
     minReturn,
     updateField,
     handleSubmit,
-  } = useBookingForm();
+  } = useBookingForm(
+    initialValues && {
+      from: initialValues.from,
+      to: initialValues.to,
+      departure: initialValues.departure,
+      returnDate: initialValues.returnDate ?? '',
+      passengers: initialValues.passengers ?? '1',
+      travelClass: initialValues.cabin ?? 'economy',
+      tripType: initialValues.returnDate ? 'round' : 'one',
+    },
+  );
 
   return (
     <section

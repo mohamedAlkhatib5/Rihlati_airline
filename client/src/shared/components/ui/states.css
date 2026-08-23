@@ -1,0 +1,95 @@
+/* =============================================================================
+   Loading, empty and error states — the three outcomes every data view needs.
+   ========================================================================== */
+
+.state-block {
+  display: grid;
+  place-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.state-block__icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.state-block h3 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-black);
+}
+
+.state-block p {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.state-block--error .state-block__icon {
+  background: #fbeaee;
+  color: var(--color-danger);
+}
+
+/* --- Skeletons ------------------------------------------------------------- */
+.skeleton {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    #eef4fa 37%,
+    var(--color-border) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+.skeleton--md {
+  border-radius: 6px;
+}
+.skeleton--lg {
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background: var(--color-border);
+  }
+}
+
+.skeleton-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.skeleton-card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.skeleton-card__row {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}

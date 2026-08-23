@@ -11,6 +11,9 @@ class PassengerResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            // Ties the traveller to one leg. Cabin alone is ambiguous: on a
+            // round trip both legs are usually the same cabin.
+            'segmentId' => $this->booking_segment_id,
             'firstName' => $this->first_name,
             'lastName' => $this->last_name,
             'fullName' => $this->full_name,

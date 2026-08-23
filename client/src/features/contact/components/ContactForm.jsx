@@ -8,7 +8,7 @@ import { useContactForm } from '../hooks/useContactForm';
 
 export function ContactForm() {
   const { t } = useTranslation();
-  const { values, errors, status, updateField, handleSubmit } =
+  const { values, errors, status, isSubmitting, updateField, handleSubmit } =
     useContactForm();
 
   return (
@@ -92,8 +92,12 @@ export function ContactForm() {
         </Col>
 
         <Col xs={12}>
-          <Button type="submit" className="primary-action">
-            {t('contact.form.submit')}
+          <Button
+            type="submit"
+            className="primary-action"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? t('common.loading') : t('contact.form.submit')}
           </Button>
         </Col>
       </Row>

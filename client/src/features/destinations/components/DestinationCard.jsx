@@ -20,6 +20,9 @@ export function DestinationCard({ destination }) {
   const country = localise(destination.country, language);
   const Arrow = isArabic ? ArrowLeft : ArrowRight;
 
+  // The API returns `priceFrom`; the bundled fallback uses the same key.
+  const price = destination.priceFrom;
+
   return (
     <motion.article
       className="destination-card"
@@ -45,11 +48,16 @@ export function DestinationCard({ destination }) {
           </div>
           <p className="destination-card__price">
             <small>{t('destinations.priceFrom')}</small>
-            {formatCurrency(destination.priceFrom, language)}
+            {formatCurrency(price, language)}
           </p>
         </div>
 
-        <Link to={ROUTES.flights} className="destination-card__cta">
+        {/* Pre-fills the search with this route, so the card leads straight
+            into a real result set rather than a blank form. */}
+        <Link
+          to={`${ROUTES.flights}?from=DXB&to=${destination.iata}`}
+          className="destination-card__cta"
+        >
           {t('destinations.bookNow')}
           <Arrow size={18} aria-hidden="true" />
         </Link>

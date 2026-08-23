@@ -11,6 +11,12 @@ export const routeLoaders = {
   [ROUTES.flights]: () => import('../../features/flights/FlightsPage'),
   [ROUTES.destinations]: () =>
     import('../../features/destinations/DestinationsPage'),
+  [ROUTES.offers]: () => import('../../features/offers/OffersPage'),
+  [ROUTES.booking]: () => import('../../features/booking/BookingPage'),
+  [ROUTES.confirmation]: () =>
+    import('../../features/booking/ConfirmationPage'),
+  [ROUTES.manageBooking]: () =>
+    import('../../features/manage-booking/ManageBookingPage'),
   [ROUTES.about]: () => import('../../features/about/AboutPage'),
   [ROUTES.contact]: () => import('../../features/contact/ContactPage'),
   [ROUTES.login]: () => import('../../features/auth/LoginPage'),
@@ -40,7 +46,14 @@ export function prefetchRoute(path) {
   load().catch(() => started.delete(path));
 }
 
-/** Warms every public route once the browser is idle after the first paint. */
+/**
+ * Warms the public routes once the browser is idle.
+ *
+ * The confirmation page is left out: it is only ever reached from the booking
+ * flow, which has already pulled in its chunk.
+ */
 export function prefetchAllRoutes() {
-  Object.keys(routeLoaders).forEach(prefetchRoute);
+  Object.keys(routeLoaders)
+    .filter((path) => path !== ROUTES.confirmation)
+    .forEach(prefetchRoute);
 }
