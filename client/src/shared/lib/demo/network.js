@@ -125,4 +125,12 @@ export const DEMO_USERS = [
     role: 'staff',
     phone: '+971 4 000 2000',
   },
+  {
+    id: 3,
+    name: 'Omar Haddad',
+    email: 'omar.haddad@example.com',
+    password: 'Traveller@123',
+    role: 'customer',
+    phone: '+971 50 111 2233',
+  },
 ];

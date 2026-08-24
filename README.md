@@ -31,14 +31,20 @@ Bilingual English / Arabic, right-to-left throughout.
 | 🌐 **Website** | **<https://rihlati-airline.vercel.app>** |
 | 🔐 **Dashboard** | <https://rihlati-airline.vercel.app/login> |
 
-> **What works on the hosted demo:** every page, all 25 destinations, the full
-> bilingual interface and the responsive layout.
+> **Everything works on the hosted demo** — search the timetable, pick a fare,
+> book a seat, look the booking up by its reference, and sign in to the
+> operations dashboard.
 >
-> **What needs the API:** flight search, booking and the dashboard read from a
-> live Laravel + MySQL backend. The hosted front-end has no API attached yet, so
-> those screens will report that the server is unreachable. Run the project
-> locally — see [Getting started](#getting-started) — and everything works end to
-> end in about five minutes.
+> Free static hosting cannot run Laravel or MySQL, so the preview ships a
+> browser-side twin of the API (`client/src/shared/lib/demo/`). It mirrors the
+> seeders and the API resources: the same 24 routes from the Dubai hub, the same
+> departure slots and fare rules, regenerated from today's date. Everything you
+> do is held in **your own browser** and disappears when you reload.
+>
+> It runs only when `VITE_DEMO_MODE` is true, which `vercel.json` sets for the
+> hosted build alone. Run the project locally — see
+> [Getting started](#getting-started) — and the real Laravel + MySQL API answers
+> instead, which is the configuration to judge the code by.
 
 ### Sign in
 

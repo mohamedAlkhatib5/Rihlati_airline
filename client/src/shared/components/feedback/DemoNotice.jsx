@@ -7,6 +7,12 @@ import { IS_DEMO } from '../../lib/apiClient';
 import { DEMO_USERS } from '../../lib/demo/network';
 import './demo-notice.css';
 
+const ROLE_LABELS = {
+  admin: 'Administrator',
+  staff: 'Operations staff',
+  customer: 'Customer',
+};
+
 /**
  * Shown in the public preview only.
  *
@@ -46,7 +52,7 @@ export function DemoNotice() {
           <dl className="demo-notice__accounts">
             {DEMO_USERS.map((user) => (
               <div key={user.email}>
-                <dt>{user.role === 'admin' ? 'Administrator' : 'Staff'}</dt>
+                <dt>{ROLE_LABELS[user.role] ?? user.role}</dt>
                 <dd>
                   <code>{user.email}</code>
                   <code>{user.password}</code>

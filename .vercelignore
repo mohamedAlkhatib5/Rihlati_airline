@@ -1,0 +1,3 @@
+# Only the React client is built here. The Laravel API is deployed separately.
+server/
+docs/
