@@ -15,7 +15,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,css,json}\"",
     "images:build": "node scripts/optimize-images.mjs",
-    "images:fetch": "node scripts/fetch-destination-images.mjs"
+    "images:fetch": "node scripts/fetch-destination-images.mjs",
+    "verify:demo": "node scripts/verify-demo.mjs"
   },
   "dependencies": {
     "bootstrap": "^5.3.7",

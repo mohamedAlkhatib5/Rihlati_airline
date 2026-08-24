@@ -1,3 +1,4 @@
+import { DemoNotice } from '../shared/components/feedback/DemoNotice';
 import { ScrollManager } from '../shared/components/layout/ScrollManager';
 import { useIdlePrefetch } from '../shared/hooks/useIdlePrefetch';
 import { AppRoutes } from './routes/AppRoutes';
@@ -13,6 +14,7 @@ export default function App() {
     <div className="app-shell">
       <ScrollManager />
       <AppRoutes />
+      <DemoNotice />
     </div>
   );
 }
