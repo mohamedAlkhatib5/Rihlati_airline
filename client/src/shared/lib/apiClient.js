@@ -5,9 +5,19 @@
  * refreshes an expired access token once before giving up — so a session that
  * has been open for over an hour keeps working without the viewer noticing.
  */
+import { handleDemoRequest } from './demo/server';
 import { readStorage, removeStorage, writeStorage } from './storage';
 
 const BASE_URL = '/api/v1';
+
+/**
+ * Demo mode: a copy of the API that runs in the browser.
+ *
+ * Free static hosting cannot run Laravel or MySQL, so the public preview would
+ * otherwise show only the marketing pages. Enabled by VITE_DEMO_MODE in that
+ * build alone; false everywhere else, where the Laravel API answers instead.
+ */
+export const IS_DEMO = import.meta.env.VITE_DEMO_MODE === 'true';
 const REFRESH_TOKEN_KEY = 'rihlati-refresh-token';
 
 /**
@@ -82,6 +92,17 @@ async function refreshSession() {
 }
 
 async function send(path, { method = 'GET', body, params, retry = true } = {}) {
+  if (IS_DEMO) {
+    try {
+      return await handleDemoRequest(method, path, body, params);
+    } catch (error) {
+      throw new ApiError(error.message ?? 'Something went wrong.', {
+        status: error.status ?? 500,
+        errors: error.errors ?? {},
+      });
+    }
+  }
+
   const url = new URL(`${BASE_URL}${path}`, window.location.origin);
 
   Object.entries(params ?? {}).forEach(([key, value]) => {

@@ -41,3 +41,6 @@ client/src/assets/images-src/
 
 .vercel
 .env*
+
+# Demo verification screenshots
+demo-shots/

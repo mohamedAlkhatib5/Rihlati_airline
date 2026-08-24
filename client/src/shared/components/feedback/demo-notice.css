@@ -1,0 +1,150 @@
+/* =====================================================
+                    PUBLIC DEMO NOTICE
+   Shown only in the hosted preview build.
+===================================================== */
+
+.demo-notice {
+  position: fixed;
+  /* End side, not start: the dashboard sidebar occupies the start edge. */
+  inset-inline-end: 1rem;
+  inset-block-end: 1rem;
+  z-index: 60;
+  inline-size: min(22rem, calc(100vw - 2rem));
+  overflow: hidden;
+  color: #fff;
+  background: var(--navy-900, #06213f);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 1rem;
+  box-shadow: 0 1.25rem 3rem rgb(3 29 57 / 38%);
+}
+
+.demo-notice__toggle {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  inline-size: 100%;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.demo-notice__toggle > svg:first-child {
+  color: var(--brand-300, #78d9ff);
+  flex: none;
+}
+
+.demo-notice__toggle > span {
+  flex: 1;
+}
+
+.demo-notice__chevron {
+  flex: none;
+  transition: transform 0.25s ease;
+}
+
+.demo-notice--open .demo-notice__chevron {
+  transform: rotate(180deg);
+}
+
+.demo-notice__body {
+  padding: 0 1rem 1rem;
+  border-block-start: 1px solid rgb(255 255 255 / 12%);
+}
+
+.demo-notice__body p {
+  margin-block: 0.875rem 0;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: rgb(255 255 255 / 76%);
+}
+
+.demo-notice__link {
+  display: inline-block;
+  margin-block-start: 0.75rem;
+  font-size: 0.87rem;
+  font-weight: 700;
+  color: var(--brand-300, #78d9ff);
+}
+
+.demo-notice__accounts {
+  margin-block: 0.875rem 0;
+  padding: 0.75rem 0.875rem;
+  background: rgb(255 255 255 / 7%);
+  border-radius: 0.625rem;
+}
+
+.demo-notice__accounts > div + div {
+  margin-block-start: 0.625rem;
+  padding-block-start: 0.625rem;
+  border-block-start: 1px solid rgb(255 255 255 / 10%);
+}
+
+.demo-notice__accounts dt {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgb(255 255 255 / 58%);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.demo-notice__accounts dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0;
+}
+
+.demo-notice__accounts code {
+  font-size: 0.78rem;
+  color: var(--brand-300, #78d9ff);
+  overflow-wrap: anywhere;
+}
+
+.demo-notice__reset {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-block-start: 0.875rem;
+  padding: 0.5rem 0.875rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+  background: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 999px;
+}
+
+.demo-notice__reset:hover {
+  background: var(--color-primary, #0b72e7);
+  border-color: var(--color-primary, #0b72e7);
+}
+
+@media (width <= 48rem) {
+  .demo-notice {
+    inset-inline: 0.75rem;
+    inline-size: auto;
+  }
+}
+
+/*
+ * The flight search page pins a full-width selection bar to the bottom of the
+ * viewport. Sitting on top of it would cover the Continue button, so the
+ * notice lifts clear whenever that bar is on the page.
+ */
+body:has(.selection-bar) .demo-notice {
+  inset-block-end: 6.5rem;
+}
+
+@media (width <= 48rem) {
+  body:has(.selection-bar) .demo-notice {
+    inset-block-end: 9rem;
+  }
+}
